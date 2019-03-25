@@ -16,21 +16,21 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: free5gcwebui-synchronizer
+  name: free5gc-webui-synchronizer
   labels:
-    app: free5gcwebui-synchronizer
+    app: free5gc-webui-synchronizer
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: free5gcwebui-synchronizer
+      app: free5gc-webui-synchronizer
   template:
     metadata:
       labels:
-        app: free5gcwebui-synchronizer
+        app: free5gc-webui-synchronizer
     spec:
       containers:
-        - name: free5gcwebui-service
+        - name: free5gc-webui-service
           image: cewuandy/free5gc-webui-synchronizer
           imagePullPolicy: Always
           volumeMounts:
