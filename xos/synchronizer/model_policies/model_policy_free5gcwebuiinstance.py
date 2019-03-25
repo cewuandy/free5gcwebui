@@ -35,6 +35,7 @@ class Free5GCWebUIInstancePolicy(Policy):
 
     def handle_update(self, service_instance):
         log.info("handle_update Free5GCWebUIInstance")
+        global instance_list
         owner = KubernetesService.objects.first()
 
         yaml_file = ["free5gc-webui-deployment.yaml", "free5gc-webui-service.yaml"]
@@ -52,9 +53,12 @@ class Free5GCWebUIInstancePolicy(Policy):
             instance = KubernetesResourceInstance(name=name, owner=owner, resource_definition=resource_definition, no_sync=False)
 
             instance.save()
+            instance_list.append(instance)
 
     def handle_delete(self, service_instance):
         log.info("handle_delete Free5GCWebUIInstance")
+        for instance in instance_list:
+            instance.delete()
         service_instance.compute_instance.delete()
         service_instance.compute_instance = None
         service_instance.save(update_fields=["compute_instance"])
