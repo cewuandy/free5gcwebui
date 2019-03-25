@@ -1,0 +1,10 @@
+option app_label = "free5gcwebui";
+option name = "free5gcwebui";
+
+message Free5GCWebUI (Service){
+    option verbose_name = "Free5GCWebUI";
+}
+
+message Free5GCWebUIInstance (ServiceInstance){
+    option verbose_name = "Free5GCWebUIInstance";
+}
