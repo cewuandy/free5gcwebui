@@ -35,10 +35,12 @@ class Free5GCWebUIInstancePolicy(Policy):
 
     def handle_update(self, service_instance):
         log.info("handle_update Free5GCWebUIInstance")
-        global instance_list
+
         owner = KubernetesService.objects.first()
 
         yaml_file = ["free5gc-webui-deployment.yaml", "free5gc-webui-service.yaml"]
+        global instance_list
+        instance_list = []
         for file in yaml_file:
             input_file=os.path.join(os.path.abspath(os.path.dirname(os.path.realpath(__file__))), file)
             with open(input_file, 'r') as stream:
