@@ -31,7 +31,7 @@ spec:
     spec:
       containers:
         - name: free5gcwebui-service
-          image: cewuandy/free5gcwebui-synchronizer
+          image: cewuandy/free5gc-webui-synchronizer
           imagePullPolicy: Always
           volumeMounts:
             - name: certchain-volume
